@@ -1,0 +1,35 @@
+language: node_js
+
+os:
+  - osx
+
+node_js:
+  - "6"
+
+branches:
+  only:
+    - master
+
+cache:
+  directories:
+    - node_modules
+
+install:
+  - npm install
+
+script:
+  - npm run build
+
+after_script:
+  - cd build
+  - git init
+  - git config --global user.name 'xLsDg'
+  - git config --global user.email 'xlsdg@qq.com'
+  - git add .
+  - git commit -m "Update demo"
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:gh-pages
+
+env:
+  global:
+    - GH_REF: github.com/xlsdg/react-echarts-v3-demo.git
+    - secure: "WdppGKu3sY0M8DIGJK7MdC9bLPZ/10g9wlRd70X27/aIvH/KRGgxuwOv5FcP2GSi7jQfhGUbDkzYgDzimIZ2ybmYaOiPymZgQ6GcNJiOjC8Nru4upvC5AwCN4oDUn2moxeAJGfCozofRQgO2NSJvAh6FsqHcHGaGcw59gbJ+TCMPEQtYx0ercawCVM+wN0msl2L4QgLkB7EEy3FFGkF7qBt3dyVxzkzp01e7rrgFQ9qgvBIkzejk0O6xTTnyTB3t1hoy8O2JcjQMZnAeDwwnzOXK7GnPoZcYmIPau4tFP9G4rM4zLSc50osbjDn/1UhPsMeUE/6ew2LHuy6T7GkSl4gIGWPxvkw4xn6mIMs12xZTH8oHeJEBD+cxLH0aEZH1cnDNLERXtnvaCKC+ANMFmDN9+iWjpIKcJ9F0eyFBm4Ix/YmmiVUYEHyhVfsep6o7jMAoN9c4cXgemmw3m99NLeGLX663lVvgf7mg3rvzEDhOaIgBE5deqPSPdZQUOoFViTek9MBfMtC6n0Jb4/zl7Uerk7DFP8Wx6vmtUMUJJAATMndk2UjgwsWRgqGIZ47QNyeqIwtCcJRWCi4ffv/xMyc2TlhzSm9PerhbiDpxGKIP9ovcjBJnuKZq+y16icaWZKq3Ku0X6GyIYcTJ3Lu4NV4He6vjEQsJx0Gqcau1QlY="
