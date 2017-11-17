@@ -2,6 +2,7 @@
   "name": "react-echarts-v3-demo",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://xlsdg.github.io/react-echarts-v3-demo",
   "dependencies": {
     "echarts": "^3.8.5",
     "react": "^16.1.1",
