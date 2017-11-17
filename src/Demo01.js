@@ -54,7 +54,7 @@ class Demo01 extends React.Component {
       <div className="echarts">
         <IEcharts
           option={option}
-          ready={that.onReady}
+          onReady={that.onReady}
         />
       </div>
     );
