@@ -5151,9 +5151,9 @@ react-dom@^16.1.1:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-react-echarts-v3@^1.0.14:
-  version "1.0.14"
-  resolved "https://registry.npmjs.org/react-echarts-v3/-/react-echarts-v3-1.0.14.tgz#eb0498cc4f955c95ef8b09031d001e4ae0b4a755"
+react-echarts-v3@^1.0.16:
+  version "1.0.16"
+  resolved "https://registry.npmjs.org/react-echarts-v3/-/react-echarts-v3-1.0.16.tgz#5946675e9a474ea4016e77ef6355b1560420788c"
   dependencies:
     element-resize-detector latest
     element-resize-event latest
