@@ -1,6 +1,8 @@
 import React from 'react';
-import IEcharts from 'react-echarts-v3';
+import IEcharts from 'react-echarts-v3/src/full.js';
 
+// import IEcharts from 'react-echarts-v3/src/lite.js';
+// import 'echarts/lib/chart/bar';
 
 import './App.css';
 
@@ -9,6 +11,8 @@ class Demo01 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      style: {},
+      loading: false,
       option: {
         title: {
           text: 'ECharts 入门示例'
@@ -42,20 +46,67 @@ class Demo01 extends React.Component {
     console.log(instance, echarts);
   }
 
-  render() {
+  onResize = (width, height) => {
+    // const that = this;
+    // const {
+    // } = that.state;
+    // const {
+    // } = that.props;
+    console.log(width, height);
+  }
+
+  doLoading = () => {
     const that = this;
     const {
+      loading,
       option
     } = that.state;
     // const {
     // } = that.props;
 
+    const data = [];
+    for (let i = 0, min = 5, max = 99; i < 6; i++) {
+      data.push(Math.floor(Math.random() * (max + 1 - min) + min));
+    }
+
+    option.series[0].data = data;
+
+    const style = {
+      width: Math.floor(Math.random() * (1024 + 1 - 400) + 400) + 'px',
+      height: Math.floor(Math.random() * (768 + 1 - 200) + 200) + 'px'
+    };
+
+    that.setState({
+      style,
+      loading: !loading,
+      option
+    });
+  }
+
+  render() {
+    const that = this;
+    const {
+      style,
+      loading,
+      option
+    } = that.state;
+    // const {
+    // } = that.props;
     return (
       <div className="echarts">
-        <IEcharts
-          option={option}
-          onReady={that.onReady}
-        />
+        <div>
+          <button onClick={that.doLoading}>Random</button>
+        </div>
+        <div className="echart" style={style}>
+          <IEcharts
+            notMerge
+            resizable
+            loading={loading}
+            option={option}
+            onReady={that.onReady}
+            onResize={that.onResize}
+          />
+        </div>
       </div>
     );
   }
