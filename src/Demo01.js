@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React from 'react';
 import IEcharts from 'react-echarts-v3/src/full.js';
 
@@ -69,7 +70,8 @@ class Demo01 extends React.Component {
       data.push(Math.floor(Math.random() * (max + 1 - min) + min));
     }
 
-    option.series[0].data = data;
+    const opts = _.cloneDeep(option);
+    opts.series[0].data = data;
 
     const style = {
       width: Math.floor(Math.random() * (1024 + 1 - 400) + 400) + 'px',
@@ -79,7 +81,7 @@ class Demo01 extends React.Component {
     that.setState({
       style,
       loading: !loading,
-      option
+      option: opts
     });
   }
 
